@@ -104,7 +104,7 @@ public class PdsDaoImpl implements PdsDao {
 		// Files
 		List<FilesVo>  fileList =  (List<FilesVo>) map.get("fileList");
 		if( fileList.size() != 0 )
-			sqlSession.insert("Pds.FileInsert", map);
+			sqlSession.insert("Pds.FileInsert2", map);
 				
 	}
 

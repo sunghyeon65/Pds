@@ -158,6 +158,25 @@
    
    </insert>
    
+    <insert id="FileInsert2">
+   
+     <foreach item="file"  collection="fileList"
+         index     =  "i"
+         open      =  "INSERT ALL"     
+         close     =  "SELECT *  FROM DUAL"
+         separator  =  " ">
+     INTO   FILES   VALUES (
+        GET_FILENUM() 
+		, #{ idx             }
+		, #{ file.filename   }     
+		, #{ file.fileext    }     
+		, #{ file.sfilename  }     
+     )   
+     
+     </foreach>     
+   
+   </insert>
+   
    <delete id="PdsDelete">
      
      DELETE  FROM BOARD
@@ -179,6 +198,14 @@
    
    </delete>
    
+   <update id="PdsUpdate">
+   
+     UPDATE  BOARD 
+        SET  TITLE  =  #{ title },
+             CONT   =  #{ cont }
+      WHERE  IDX    =  #{ idx }
+   
+   </update>
   
 </mapper>
 

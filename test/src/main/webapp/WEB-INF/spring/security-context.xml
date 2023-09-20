@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:security="http://www.springframework.org/schema/security"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+                  http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<security:http>
+		<!-- 사용자 지정 로그인폼 페이지 요청주소 및 로그인 성공시, 실패시 요청 주소 지정 -->
+		<security:form-login login-page="/loginform.it" default-target-url="/loginsuccess.it"
+			authentication-failure-url="/loginfail.it" />
+
+		<!-- 로그아웃 요청주소 지정 -->
+		<security:logout logout-success-url="/logoutform.it" />
+
+		<!-- 로그인 세션을 가진 사용자만 접근 가능한 요청주소 지정 -->
+		<security:intercept-url pattern="/employee*.it" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/nemployeelist.it" access="ROLE_USER" />
+
+	</security:http>
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<!-- <user-service> -->
+			<!-- 로그인 사용자 계정 및 권한(ROLE_ADMIN) 지정 -->
+			<!-- <user name="admin" password="1234" authorities="ROLE_ADMIN" /> -->
+			<!-- <user name="user" password="0000" authorities="ROLE_USER" /> -->
+			<!-- </user-service> -->
+			<security:jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT id AS userName,password, enabled 
+					FROM member WHERE id=?"
+				authorities-by-username-query="SELECT id AS userName, authority 
+					FROM member WHERE id=?" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>
