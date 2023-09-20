@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+	padding :0;  margin :0;	
+}
+
+a       { text-decoration: none;      color : black;  }
+a:hover { text-decoration: underline; color : black;  }
+
+table , th, td {
+	border :  1px solid #c8c8c8;
+	border-collapse: collapse;
+}
+
+main   { width: 80%; margin : 0 auto; }
+table  { width : 100%; }
+td     { padding :10px; }
+
+h2 {  margin : 20px 10px;  }
+
+
+
