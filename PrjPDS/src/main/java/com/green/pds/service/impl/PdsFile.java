@@ -81,7 +81,7 @@ public class PdsFile {
 
 	public static void delete(List<FilesVo> fileList) {
 		
-		String path = "d:\\upload\\";
+		String path = "d:\\dev\\data\\";
 		
 		fileList.forEach( ( f ) -> {
 			String sfile = f.getSfilename();

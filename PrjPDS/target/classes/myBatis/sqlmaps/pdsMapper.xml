@@ -30,6 +30,40 @@
 		  
    </select>
    
+   <select id="PdsView"
+           resultType="com.green.pds.vo.PdsVo">
+   
+     SELECT   
+	    IDX,
+	    MENU_ID,
+	    TITLE,
+	    CONT,
+	    WRITER,
+	    TO_CHAR(REGDATE, 'YYYY-MM-DD HH24:MI:SS') REGDATE,
+	    READCOUNT,
+	    BNUM,
+	    LVL,
+	    STEP,
+	    NREF
+	 FROM
+        BOARD
+     WHERE
+        IDX = #{ idx }   
+   
+   </select>
+   
+   <select id="FileList"
+           resultType="com.green.pds.vo.FilesVo">
+      
+      SELECT   
+          FILE_NUM,  IDX,  FILENAME,  FILEEXT,  SFILENAME
+       FROM
+          FILES
+       WHERE   
+          IDX   =   #{ idx }          
+        
+   </select>
+   
    <insert id="PdsInsert">
       
       INSERT  INTO   BOARD (
@@ -123,6 +157,20 @@
      </foreach>     
    
    </insert>
+   
+   <delete id="PdsDelete">
+     
+     DELETE  FROM BOARD
+      WHERE  IDX = #{ idx  }
+   
+   </delete>
+   
+   <delete id="FileDelete">
+   
+     DELETE  FROM  FILES
+      WHERE  IDX = #{ idx  }
+   
+   </delete>
    
   
 </mapper>

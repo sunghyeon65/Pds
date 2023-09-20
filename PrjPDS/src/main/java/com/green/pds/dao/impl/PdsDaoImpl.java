@@ -56,7 +56,41 @@ public class PdsDaoImpl implements PdsDao {
 		
 	}
 
+	@Override
+	public PdsVo getView(HashMap<String, Object> map) {
+		
+		PdsVo   pdsVo  =  sqlSession.selectOne("Pds.PdsView", map);
+		
+		return  pdsVo;
+	}
+
+	@Override
+	public List<FilesVo> getFileList(HashMap<String, Object> map) {
+		
+		List<FilesVo>  fileList  =  sqlSession.selectList("Pds.FileList", map);
+		
+		return  fileList;
+	}
+
+	@Override
+	public void setDelete(HashMap<String, Object> map) {
+
+		System.out.println("1111---------------");
+		List<FilesVo> fileList = sqlSession.selectList("Pds.FileList", map); 
+		map.put("fileList", fileList);
+		
+		System.out.println("2222---------------");
+		sqlSession.delete("Pds.FileDelete", map);   // 게시글 관련 파일들 삭제
+		System.out.println("3333---------------");
+		sqlSession.delete("Pds.PdsDelete",  map);   // 게시글 삭제
+		System.out.println("4444---------------");
+		
+		
+	}
+
 }
+
+
 
 
 

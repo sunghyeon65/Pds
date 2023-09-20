@@ -54,7 +54,7 @@
   <table id="table">
    <caption>
      <c:choose>
-      <c:when test="${ vo.bnum == 0 }">
+      <c:when test="${ map.bnum == 0 }">
   	    <h2>${ map.menuname } 자료실 새글 등록</h2>
   	  </c:when>
   	  <c:otherwise>  	     

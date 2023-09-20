@@ -68,10 +68,14 @@
    		  <b style="display:inline-block;width:${(pds.lvl-1)*20}px"></b> 
    		  <c:choose>
    		    <c:when test="${ pds.lvl eq 0 }">
+   		       <a href="/Pds/View?menu_id=${ pds.menu_id }&idx=${ pds.idx }">
    		       ${ pds.title }
+   		       </a>
    		    </c:when>
    		    <c:otherwise>
-   		       [답글] ${ pds.title }  
+   		      <a href="/Pds/View?menu_id=${ pds.menu_id }&idx=${ pds.idx }">
+   		       [답글] ${ pds.title }
+   		      </a>   
    		    </c:otherwise>
    		  </c:choose>    
    		</td>
