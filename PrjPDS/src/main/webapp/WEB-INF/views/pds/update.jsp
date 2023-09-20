@@ -27,6 +27,8 @@
      
    input[type="text"]              { width: 100%; }  
    textarea                        { width: 100%; height: 300px; } 
+   
+   h2                              { text-align: center; margin: 20px; }
      
 </style>
 
@@ -56,10 +58,9 @@
   <form  action="/Pds/Update" method="POST"
          enctype="multipart/form-data">
   
-  <table id="table">
-   <caption>
      <h2>${ menuname } 자료실 내용 보기</h2>
-   </caption>
+ 
+  <table id="table">
    
    <tr>
    	<th>글번호</th>
@@ -103,8 +104,8 @@
       <br>
       
       <!-- 새 파일 추가 -->
-      <input type ="button" id="btnAddFile" value="파일추가(100M 까지)" /><br>
-      <input type="file" name="upfile" /><br>
+      <input type ="button" class="form-control" id="btnAddFile" value="파일추가(100M 까지)" /><br>
+      <input type="file"  class="form-control" name="upfile" /><br>
       
     </td>
    </tr>
